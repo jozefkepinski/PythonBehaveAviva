@@ -12,13 +12,13 @@ def open_home_webpage(context):
     context.driver.get("https://www.aviva.com/")
 
 
-@then('The title should be "Aviva corporate website - Aviva plc"')
-def verify_title(context):
+@then('The title should be "{expected_title}"')
+def verify_title(context, expected_title):
     accept_coockie_button = context.driver.find_element(By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
     accept_coockie_button.click()
 
     actual_title = context.driver.title
-    assert "Aviva corporate website - Aviva plc" == actual_title
+    assert expected_title == actual_title
 
 @then('close browser')
 def close_browser(context):
