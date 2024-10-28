@@ -7,3 +7,14 @@ Feature: Aviva Check Web Page
     When open aviva web page
     Then The title should be "Aviva corporate website - Aviva plc"
     And close browser
+
+
+  Scenario Outline:
+    Given launch chrome browser
+    When open aviva web page
+    Then The title should be "<title>"
+    And close browser
+
+    Examples:
+    |title                              |
+    |Aviva corporate website - Aviva plc|

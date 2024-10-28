@@ -1,3 +1,5 @@
+"""Test steps for validate Aviva web page."""
+
 from behave import *
 from  selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -14,8 +16,8 @@ def open_home_webpage(context):
 
 @then('The title should be "{expected_title}"')
 def verify_title(context, expected_title):
-    accept_coockie_button = context.driver.find_element(By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
-    accept_coockie_button.click()
+    accept_cookie_button = context.driver.find_element(By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
+    accept_cookie_button.click()
 
     actual_title = context.driver.title
     assert expected_title == actual_title
