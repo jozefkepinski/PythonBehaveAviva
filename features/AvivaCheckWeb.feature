@@ -2,19 +2,19 @@ Feature: Aviva Check Web Page
 
   This automation is for demonstrate capabilities of behave library with python language.
 
-  Scenario: Open Aviva Web page and validate it
+  Background:
     Given launch chrome browser
     When open aviva web page
-    Then The title should be "Aviva corporate website - Aviva plc"
-    And close browser
 
+
+
+  Scenario: Open Aviva Web page and validate it
+    Then The title should be "Aviva corporate website - Aviva plc"
+     And close browser
 
   Scenario Outline:
-    Given launch chrome browser
-    When open aviva web page
     Then The title should be "<title>"
-    And close browser
-
+     And close browser
     Examples:
     |title                              |
     |Aviva corporate website - Aviva plc|
