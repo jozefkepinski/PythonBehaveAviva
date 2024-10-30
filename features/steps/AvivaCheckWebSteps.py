@@ -1,8 +1,8 @@
-"""Test steps for validate Aviva web page."""
-
 from behave import *
 from  selenium import webdriver
 from selenium.webdriver.common.by import By
+from Pages.home_page import HomePage
+
 
 @given('launch chrome browser')
 def launch_browser(context):
@@ -11,15 +11,15 @@ def launch_browser(context):
 
 @when('open aviva web page')
 def open_home_webpage(context):
-    context.driver.get("https://www.aviva.com/")
+    context.home_page = HomePage(context.driver)
+    context.home_page.navigate_to_home_page()
 
 
 @then('The title should be "{expected_title}"')
 def verify_title(context, expected_title):
-    accept_cookie_button = context.driver.find_element(By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
-    accept_cookie_button.click()
+    context.home_page.accept_all_cookies()
 
-    actual_title = context.driver.title
+    actual_title = context.home_page.get_title()
     assert expected_title == actual_title
 
 @then('close browser')
